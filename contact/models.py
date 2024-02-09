@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # id (primary key - automático)
 # first_name (string), last_name (string), phone (string)
