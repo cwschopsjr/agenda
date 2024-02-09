@@ -11,6 +11,9 @@ from django.utils import timezone
 
 
 class Units(models.Model):
+    class Meta:
+        verbose_name = 'Unidade'
+
     nome = models.CharField(max_length=50)
 
     def __str__(self) -> str:
@@ -18,6 +21,10 @@ class Units(models.Model):
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = 'Tipo de leito'
+        verbose_name_plural = 'Tipos de leito'
+
     nome = models.CharField(max_length=50)
 
     def __str__(self) -> str:
@@ -25,6 +32,10 @@ class Category(models.Model):
 
 
 class Category2(models.Model):
+    class Meta:
+        verbose_name = 'Uso do leito'
+        verbose_name_plural = 'Usos do leito'
+
     nome = models.CharField(max_length=50)
 
     def __str__(self) -> str:
@@ -32,6 +43,9 @@ class Category2(models.Model):
 
 
 class Contact(models.Model):
+    class Meta:
+        verbose_name = 'Leito'
+
     nome = models.CharField(max_length=50)
     sobrenome = models.CharField(max_length=50)
     telefone = models.CharField(max_length=50)
