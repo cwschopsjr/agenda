@@ -10,15 +10,42 @@ from django.utils import timezone
 # owner (foreign key)
 
 
-class Contact(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254, blank=True)
-    created_date = models.DateTimeField(default=timezone.now)
-    description = models.TextField(blank=True)
-    show = models.BooleanField(default=True)
-    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/%d/')
+class Units(models.Model):
+    nome = models.CharField(max_length=50)
 
     def __str__(self) -> str:
-        return f'{self.first_name} {self.last_name}'
+        return self.nome
+
+
+class Category(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.nome
+
+
+class Category2(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return self.nome
+
+
+class Contact(models.Model):
+    nome = models.CharField(max_length=50)
+    sobrenome = models.CharField(max_length=50)
+    telefone = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    anotacoes = models.TextField(blank=True)
+    show = models.BooleanField(default=True)
+    unidade = models.ForeignKey(
+        Units, on_delete=models.SET_NULL, blank=True, null=True)
+    tipo_de_leito = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, blank=True, null=True)
+    uso_do_leito = models.ForeignKey(
+        Category2, on_delete=models.SET_NULL, blank=True, null=True)
+    imagem = models.ImageField(blank=True, upload_to='pictures/%Y/%m/%d/')
+
+    def __str__(self) -> str:
+        return f'{self.nome} {self.sobrenome}'
