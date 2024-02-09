@@ -51,7 +51,6 @@ class Contact(models.Model):
     sobrenome = models.CharField(max_length=50)
     telefone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, blank=True)
-    created_date = models.DateTimeField(default=timezone.now)
     anotacoes = models.TextField(blank=True)
     show = models.BooleanField(default=True)
     unidade = models.ForeignKey(
@@ -62,10 +61,8 @@ class Contact(models.Model):
         Category2, on_delete=models.SET_NULL, blank=True, null=True)
     enviar_arquivo = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     owner = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        blank=True, null=True
-    )
+        User, on_delete=models.SET_NULL, blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
         return f'{self.nome} {self.sobrenome}'
