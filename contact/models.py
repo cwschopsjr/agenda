@@ -45,7 +45,7 @@ class Contact(models.Model):
         Category, on_delete=models.SET_NULL, blank=True, null=True)
     uso_do_leito = models.ForeignKey(
         Category2, on_delete=models.SET_NULL, blank=True, null=True)
-    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/%d/')
+    enviar_arquivo = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
 
     def __str__(self) -> str:
         return f'{self.nome} {self.sobrenome}'
