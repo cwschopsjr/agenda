@@ -1,4 +1,8 @@
 body {
-    background-color: black;
-    color: white;
+    background-color: rgb(9,9,10);
+    color: mintcream;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 200px;
 }
