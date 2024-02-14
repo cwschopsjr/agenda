@@ -11,20 +11,19 @@ from django.contrib.auth.models import User
 # owner (foreign key)
 
 
-class Units(models.Model):
-    class Meta:
-        verbose_name = 'Unidade'
+# class Units(models.Model):
+#     class Meta:
+#         verbose_name = 'Unidade'
 
-    nome = models.CharField(max_length=50)
+#     nome = models.CharField(max_length=50)
 
-    def __str__(self) -> str:
-        return self.nome
+#     def __str__(self) -> str:
+#         return self.nome
 
 
 class Category(models.Model):
     class Meta:
-        verbose_name = 'Tipo de leito'
-        verbose_name_plural = 'Tipos de leito'
+        verbose_name = 'Categoria'
 
     nome = models.CharField(max_length=50)
 
@@ -32,39 +31,38 @@ class Category(models.Model):
         return self.nome
 
 
-class Category2(models.Model):
-    class Meta:
-        verbose_name = 'Uso do leito'
-        verbose_name_plural = 'Usos do leito'
+# class Category2(models.Model):
+#     class Meta:
+#         verbose_name = 'Uso do leito'
+#         verbose_name_plural = 'Usos do leito'
 
-    nome = models.CharField(max_length=50)
+#     nome = models.CharField(max_length=50)
 
-    def __str__(self) -> str:
-        return self.nome
+#     def __str__(self) -> str:
+#         return self.nome
 
 
 class Contact(models.Model):
     class Meta:
-        verbose_name = 'Leito'
+        verbose_name = 'Agendamento'
 
-    unidade = models.ForeignKey(
-        Units, on_delete=models.SET_NULL, blank=True, null=True)
-    id_leito = models.CharField(max_length=10, blank=True, null=True)
-    quarto = models.CharField(max_length=10, blank=True, null=True)
-    tipo_de_leito = models.ForeignKey(
+    # unidade = models.ForeignKey(
+    #     Units, on_delete=models.SET_NULL, blank=True, null=True)
+    cpf = models.CharField(max_length=11, blank=True, null=True)
+    categoria = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)
     nome_do_paciente = models.CharField(max_length=50, blank=True, null=True)
-    diagnostico = models.CharField(max_length=50, blank=True, null=True)
+    hd = models.CharField(max_length=50, blank=True, null=True)
     telefone = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True)
     anotacoes = models.TextField(blank=True)
     show = models.BooleanField(default=True)
-    uso_do_leito = models.ForeignKey(
-        Category2, on_delete=models.SET_NULL, blank=True, null=True)
+    # uso_do_leito = models.ForeignKey(
+    #     Category2, on_delete=models.SET_NULL, blank=True, null=True)
     enviar_arquivo = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     owner = models.ForeignKey(
         User, on_delete=models.SET_NULL, blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
-        return f'{self.unidade} {self.quarto} {self.id_leito} {self.nome_do_paciente}'
+        return f'{self.cpf} {self.hd} {self.nome_do_paciente}'
