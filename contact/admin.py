@@ -4,13 +4,13 @@ from contact import models
 
 @admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = 'id', 'nome_do_paciente', 'cpf', 'hd', 'telefone'
+    list_display = 'id', 'nome_do_paciente', 'cpf', 'hd', 'telefone', 'show'
     ordering = '-id',
     # list_filter = 'last_name',
     search_fields = 'id', 'nome_do_paciente', 'cpf', 'hd'
     list_per_page = 10
     list_max_show_all = 200
-    # list_editable = 'nome_do_paciente',
+    list_editable = 'show',
     list_display_links = 'id',
 
 

@@ -1,0 +1,17 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    <div class="single-contact">
+        <h1 class="single-contact-name">
+            {{contact.nome_do_paciente}}
+        </h1>
+        <p><b>ID:</b> {{contact.id}}</p>
+        <p><b>CPF:</b> {{contact.cpf}}</p>
+        <p><b>HD:</b> {{contact.hd}}</p>
+        <p><b>Telefone:</b> {{contact.telefone}}</p>
+        <p><b>Email:</b> {{contact.email}}</p>
+        <p><b>Anotações:</b> {{contact.anotacoes}}</p>
+        <p><b>Data da criação:</b> {{contact.created_date}}</p>
+        <p><b>Categoria:</b> {{contact.categoria.nome}}</p>
+    </div>
+{% endblock content %}
