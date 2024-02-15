@@ -3,14 +3,20 @@ from contact.models import Contact
 
 
 def index(request):
-    contacts = Contact.objects.filter(show=True).order_by('-id')[:10]
+    # contacts = Contact.objects.filter(show=True).order_by('-id')[:10]
 
     context = {
-        'contacts': contacts,
         'site_title': 'Contatos - '
     }
 
     return render(request, 'contact/index.html', context)
+
+def agenda(request):
+    contacts = Contact.objects.filter(show=True).order_by('-id')[:10]
+
+    context = {'contacts': contacts,}
+
+    return render(request, 'contact/agenda.html', context)
 
 
 def contact(request, contact_id):
