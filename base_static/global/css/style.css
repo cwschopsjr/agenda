@@ -175,6 +175,11 @@
   .single-contact p {
     margin: 1rem 0;
   }
+
+  .single-contact-name-search {
+    text-align: center;
+    font-size: var(--medium-font-size);
+  }
   
   .pagination {
     margin-top: var(--spacing);
