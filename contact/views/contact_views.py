@@ -1,13 +1,18 @@
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db.models import Q
 from contact.models import Contact
 
 
 def index(request):
-    contacts = Contact.objects.filter(show=True).order_by('-id')[:20]
+    contacts = Contact.objects.filter(show=True).order_by('-id')
+
+    paginator = Paginator(contacts, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Contatos - '
     }
 
@@ -34,6 +39,7 @@ def contact(request, contact_id):
 
     return render(request, 'contact/contact.html', context)
 
+
 def search(request):
     search_value = request.GET.get('q', '').strip()
 
@@ -41,13 +47,17 @@ def search(request):
         return redirect('contact:index')
 
     contacts = Contact.objects\
-    .filter(show=True)\
-    .filter(Q(nome_do_paciente__icontains=search_value) |
-            Q(hd__icontains=search_value))\
-    .order_by('-id')
+        .filter(show=True)\
+        .filter(Q(nome_do_paciente__icontains=search_value) |
+                Q(hd__icontains=search_value))\
+        .order_by('-id')
+
+    paginator = Paginator(contacts, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'contacts': contacts,
+        'page_obj': page_obj,
         'site_title': 'Search - '
     }
 
