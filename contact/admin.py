@@ -4,10 +4,10 @@ from contact import models
 
 @admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = 'id', 'nome_do_paciente', 'cpf', 'hd', 'telefone', 'show'
+    list_display = 'id', 'data_da_consulta', 'nome_do_paciente', 'cpf', 'telefone', 'show'
     ordering = '-id',
     # list_filter = 'last_name',
-    search_fields = 'id', 'nome_do_paciente', 'cpf', 'hd'
+    search_fields = 'id', 'data_da_consulta', 'nome_do_paciente', 'cpf', 'hd'
     list_per_page = 10
     list_max_show_all = 200
     list_editable = 'show',

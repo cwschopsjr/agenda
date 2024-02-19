@@ -48,6 +48,7 @@ class Contact(models.Model):
 
     # unidade = models.ForeignKey(
     #     Units, on_delete=models.SET_NULL, blank=True, null=True)
+    data_da_consulta = models.DateField(auto_now=False, blank=True, null=True)
     cpf = models.CharField(max_length=11, blank=True, null=True)
     categoria = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)
