@@ -49,7 +49,8 @@ def search(request):
     contacts = Contact.objects\
         .filter(show=True)\
         .filter(Q(nome_do_paciente__icontains=search_value) |
-                Q(hd__icontains=search_value))\
+                Q(hd__icontains=search_value) |
+                Q(data_da_consulta__icontains=search_value)) \
         .order_by('-id')
 
     paginator = Paginator(contacts, 20)
