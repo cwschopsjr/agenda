@@ -20,9 +20,16 @@
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {{ field }}
         {{ field.errors }}
+      
       </div>
+
+      {% if field.name == 'enviar_arquivo' and field.value.url %}
+        <div class="form-group">
+          <img src="{{ field.value.url }}" alt="">
+        </div>
+      {% endif %}
     {% endfor %}
-    </div>
+  </div>
 
     <div class="form-content">
         <div class="form-group">

@@ -5,13 +5,20 @@ from django.core.exceptions import ValidationError
 
 
 class ContactForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+
+    enviar_arquivo = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+            }
+        )
+    )
 
     class Meta:
         model = Contact
         fields = ('data_da_consulta', 'cpf', 'nome_do_paciente',
-                  'hd', 'telefone', 'email', 'anotacoes', 'categoria')
+                  'hd', 'telefone', 'email', 'anotacoes', 'categoria',
+                  'enviar_arquivo')
 
     def clean(self):
         cleaned_data = self.cleaned_data

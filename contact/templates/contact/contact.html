@@ -15,6 +15,13 @@
         <p><b>Data da criação:</b> {{contact.created_date}}</p>
         <p><b>Categoria:</b> {{contact.categoria.nome}}</p>
 
+        {% if contact.enviar_arquivo %}
+            <p>
+                <img src="{{ contact.enviar_arquivo.url }}" alt="{{ contact.nome_do_paciente }}">
+            </p>
+        {% endif %}
+
+
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
 
