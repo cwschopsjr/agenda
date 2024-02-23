@@ -188,7 +188,7 @@ svg {
   padding: var(--spacing);
   text-align: center;
   border-radius: var(--default-border-radius);
-  font-size: var(--smaller-font-size);
+  font-size: var(--small-font-size);
 }
 .message.success {
   background: rgba(0, 255, 0, 0.3);
@@ -201,6 +201,10 @@ svg {
 .message.warning {
   background: rgba(255, 255, 0, 0.3);
   border: 1px solid rgba(255, 255, 0, 90%);
+}
+.message.info {
+  background: rgba(0, 0, 255, 0.3);
+  border: 1px solid rgba(0, 0, 255, 0.3);
 }
 .form-wrapper {
   max-width: 60rem;
