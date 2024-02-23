@@ -9,7 +9,7 @@ class ContactForm(forms.ModelForm):
     enviar_arquivo = forms.ImageField(
         widget=forms.FileInput(
             attrs={
-                'accept': 'image/*',
+                'accept': 'img/*',
             }
         )
     )
@@ -31,18 +31,3 @@ class ContactForm(forms.ModelForm):
             )
             self.add_error('nome_do_paciente', msg)
         return super().clean()
-
-
-def create(request):
-    if request.method == 'POST':
-        context = {
-            'form': ContactForm(request.POST)
-        }
-
-        return render(request, 'contact/create.html', context)
-
-    context = {
-        'form': ContactForm()
-    }
-
-    return render(request, 'contact/create.html', context)
