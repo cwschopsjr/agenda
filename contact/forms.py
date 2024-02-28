@@ -68,16 +68,16 @@ class RegisterForm(UserCreationForm):
 
 
 class RegisterUpdateForm(forms.ModelForm):
-    first_name = forms.CharField(
+    primeiro_nome = forms.CharField(
         min_length=2,
         max_length=30,
         required=True,
         help_text='Required.',
         error_messages={
-            'min_length': 'Please, add more than 2 letters.'
+            'min_length': 'Por favor, adicione mais que 2 letras'
         }
     )
-    last_name = forms.CharField(
+    sobrenome = forms.CharField(
         min_length=2,
         max_length=30,
         required=True,
@@ -103,7 +103,7 @@ class RegisterUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = (
-            'first_name', 'last_name', 'email',
+            'primeiro_nome', 'sobrenome', 'email',
             'username',
         )
 

@@ -47,14 +47,17 @@ class Contact(models.Model):
     # unidade = models.ForeignKey(
     #     Units, on_delete=models.SET_NULL, blank=True, null=True)
     data_da_consulta = models.DateField(auto_now=False, blank=True, null=True)
-    cpf = models.CharField(max_length=11, blank=True, null=True)
+    cpf = models.CharField(max_length=11, blank=True,
+                           null=True, verbose_name='CPF')
     categoria = models.ForeignKey(
         Category, on_delete=models.SET_NULL, blank=True, null=True)
     nome_do_paciente = models.CharField(max_length=50, blank=True, null=True)
-    hd = models.CharField(max_length=50, blank=True, null=True)
+    hd = models.CharField(max_length=50, blank=True,
+                          null=True, verbose_name='HD')
     telefone = models.CharField(max_length=50, blank=True, null=True)
-    email = models.EmailField(max_length=254, blank=True)
-    anotacoes = models.TextField(blank=True)
+    email = models.EmailField(
+        max_length=254, blank=True, verbose_name='E-mail')
+    anotacoes = models.TextField(blank=True, verbose_name='Anotações')
     show = models.BooleanField(default=True)
     # uso_do_leito = models.ForeignKey(
     #     Category2, on_delete=models.SET_NULL, blank=True, null=True)
