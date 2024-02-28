@@ -115,7 +115,6 @@ USE_I18N = True
 USE_TZ = True
 
 USE_L10N = False
-# DATE_FORMAT = "d-m-Y"
 
 
 # Static files (CSS, JavaScript, Images)

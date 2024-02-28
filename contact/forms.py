@@ -17,6 +17,14 @@ class ContactForm(forms.ModelForm):
         ),
         required=False
     )
+    data_da_consulta = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'placeholder': 'dd/mm/aaaa',
+            }
+        ),
+        required=False
+    )
 
     class Meta:
         model = Contact

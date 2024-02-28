@@ -5,7 +5,7 @@ from contact.models import Contact
 
 
 def index(request):
-    contacts = Contact.objects.filter(show=True).order_by('-id')
+    contacts = Contact.objects.filter(show=True).order_by('-data_da_consulta')
 
     paginator = Paginator(contacts, 20)
     page_number = request.GET.get('page')
